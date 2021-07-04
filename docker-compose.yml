@@ -7,8 +7,8 @@ services:
     container_name: bookmark-https
     image: steveltn/https-portal:1
     ports:
-      - '80:80'
-      - '443:443'
+      - '8081:80'
+      - '5443:443'
     environment:
       STAGE: local
       DOMAINS: "localhost -> http://web"
