@@ -42,5 +42,20 @@ class ShowBookmarkListPageUseCaseTest extends TestCase
      * ・トップユーザーについて：10人取得できていること、内容が投稿数順になっていること
      */
     self::assertCount(10, $response['bookmarks']);
+
+    self::assertCount(10, $response['top_categories']);
+    self::assertCount(10, $response['top_users']);
+
+    for ($i=100; $i>90; $i--) {
+      self::assertSame($i, $response['bookmarks'][100 - $i]->id);
+    }
+
+    for ($i=1; $i<10; $i++) {
+      self::assertSame($i, $response['top_categories'][$i - 1]->id);
+    }
+
+    for ($i=1; $i<10; $i++) {
+      self::assertSame($i, $response['top_users'][$i - 1]->id);
+    }
   }
 }
